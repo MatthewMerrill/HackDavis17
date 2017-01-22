@@ -1,0 +1,17 @@
+<div class="contentCenter">
+  <h2>Last Week in Review</h2>
+</div>
+
+<div class="compare-wrapper">
+  <div class="compare-drawer-wrapper">
+    <div class="compare-drawer">
+      <compare-column
+          ng-class="{'compare-column-first':$first,'compare-column-last':$last}"
+          ng-repeat="building in buildings | selectedBuildings:this"
+          ng-animate="'animate'"
+      ></compare-column>
+    </div>
+  </div>
+</div>
+
+<building-select></building-select>

@@ -1,0 +1,11 @@
+<div ng-class="{'red': !goodChange, 'green': goodChange}">
+  <div class="compare-arrow">
+    <span class="glyphicon"
+          ng-class="'glyphicon-arrow-'+((!goodChange)?'up':'down')"></span>
+    <span class="percent">{{percentChange}}%</span>
+  </div>
+  <div class="compare-data">
+    <span class="monetary">{{changeInValue}}</span>
+    <span class="units">{{newValue}}</span>
+  </div>
+</div>

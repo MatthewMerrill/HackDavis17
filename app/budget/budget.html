@@ -1,0 +1,74 @@
+<div class="contentCenter" style="min-height: 300px; max-width: 1000px">
+  <div id="chart_div" style="float:right;width: 550px;height:250px"></div>
+
+  <label style="margin-top: 20px">
+    <span style="display:inline-block;width: 125px;">Budget Max</span>
+    <input type="number"
+           ng-model="budgetMax"
+           ng-disabled="!selectedBuilding"
+           ng-change="drawChart()">
+  </label>
+
+  <label>
+    <span style="display:inline-block;width: 125px;">Electricity</span>
+    <input type="number"
+           ng-model="budgetElectricity"
+           ng-disabled="!selectedBuilding"
+           ng-change="drawChart()">
+  </label>
+
+  <label>
+    <span style="display:inline-block;width: 125px;">Steam</span>
+    <input type="number"
+           ng-model="budgetSteam"
+           ng-disabled="!selectedBuilding"
+           ng-change="drawChart()">
+  </label>
+
+  <label>
+    <span style="display:inline-block;width: 125px;">Chilled Water</span>
+    <input type="number"
+           ng-model="budgetChilled"
+           ng-disabled="!selectedBuilding"
+           ng-change="drawChart()">
+  </label>
+
+  <label>
+    <span style="display:inline-block;width: 125px;">Current Total</span>
+    <input type="number"
+           style="background-color: #e0e0e0"
+           readonly
+           ng-value="budgetElectricity+budgetSteam+budgetChilled">
+  </label>
+
+  <label>
+    <span style="display:inline-block;width: 125px;">Remaining Budget</span>
+    <input type="number"
+           style="background-color: #e0e0e0"
+           readonly
+           ng-value="budgetMax-(budgetElectricity+budgetSteam+budgetChilled)">
+  </label>
+
+</div>
+
+<div class="contentCenter">
+  <h3>Building Selection</h3>
+  <input type="text"
+         placeholder="Building Search"
+         ng-model="searchText">
+  <button class="pull-right"
+          ng-click="clearSelection()">Clear Selection</button>
+  <button class="pull-right"
+          ng-click="selectAll()">Select All</button>
+
+  <div class="buildingCheckWrapper">
+    <label ng-repeat="building in buildings | searchBuildings:this">
+      <input
+          type="radio"
+          ng-model="$parent.selectedBuilding"
+          ng-change="changedBuilding();drawChart()"
+          value="{{building.id}}">
+      {{building.name}}
+    </label>
+  </div>
+</div>

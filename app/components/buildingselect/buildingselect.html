@@ -1,0 +1,45 @@
+<!--<div class="contentCenter">
+  <h3>Select by Type:</h3>
+  <label>
+    <input type="checkbox"
+           ng-click="toggleCategory('LAB')">
+    Labs
+  </label>
+  <label>
+    <input type="checkbox"
+           ng-click="toggleCategory('OFF')">
+    Offices
+  </label>
+  <label>
+    <input type="checkbox"
+           ng-click="toggleCategory('CLS')">
+    Classrooms
+  </label>
+  <label>
+    <input type="checkbox"
+           ng-click="toggleCategory('C')">
+    Community
+  </label>
+</div>-->
+
+<div class="contentCenter">
+  <h3>Building Selection</h3>
+  <input type="text"
+         placeholder="Building Search"
+         ng-model="searchText">
+  <button class="pull-right"
+          ng-click="clearSelection()">Clear Selection</button>
+  <button class="pull-right"
+          ng-click="selectAll()">Select All</button>
+
+  <div class="buildingCheckWrapper">
+    <label ng-repeat="building in buildings | searchBuildings:this">
+      <input
+          type="checkbox"
+          value="{{building.id}}"
+          ng-checked="selectedBuildings.indexOf(building.id)>-1"
+          ng-click="toggleSelection(building.id)">
+      {{building.name}}
+    </label>
+  </div>
+</div>

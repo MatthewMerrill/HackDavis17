@@ -1,0 +1,47 @@
+<div class="contentCenter">
+  <h1>Calendar</h1>
+</div>
+
+<div class="contentCenter" style="max-width: 1000px">
+  <div id="calendar_basic"></div>
+</div>
+
+<div class="contentCenter">
+  <span style="color: red">{{errorMessage}}</span>
+  <form ng-submit="drawChart()" style="display: inline-block; width: 50%; min-width: 300px; margin-bottom: 20px">
+    <label>
+      Start Date
+      <input type="date" ng-model="startDate"/>
+    </label>
+    <label>
+      End Date
+      <input type="date" ng-model="endDate"/>
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+  <div style="display:inline-block;">
+    <label>
+    <input type="radio"
+           ng-model="selectedUtility"
+           ng-change="drawChart()"
+           value="electricity">
+      Electricity
+    </label>
+    <label>
+      <input type="radio"
+             ng-model="selectedUtility"
+             ng-change="drawChart()"
+             value="steam">
+      Steam
+    </label>
+    <label>
+      <input type="radio"
+             ng-model="selectedUtility"
+             ng-change="drawChart()"
+             value="chilled">
+      Chilled Water
+    </label>
+  </div>
+</div>
+
+<building-select></building-select>
